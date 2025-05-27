@@ -4,10 +4,6 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <>
-    <nav>
-      <Link className="nav-link">Videos</Link>
-    </nav>
-    </>
+    <> Main Content </>
   );
 }
