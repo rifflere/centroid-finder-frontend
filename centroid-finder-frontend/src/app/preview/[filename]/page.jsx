@@ -1,3 +1,3 @@
 export default function Page({children}){
-    return <> Preview Page </>;
+    return <div style={{ border: '2px solid', borderColor: 'gold' }}> Preview Page </div>;
 }

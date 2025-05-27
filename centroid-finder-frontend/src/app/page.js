@@ -4,6 +4,6 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <> Main Content </>
+    <div style={{ border: '2px solid', borderColor: 'gold' }}> Main Content </div>
   );
 }
