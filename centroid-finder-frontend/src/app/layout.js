@@ -22,7 +22,7 @@ export default function Layout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
             <nav style={{ border: '2px solid', borderColor: 'blue' }}>
-              <Link className="nav-link" href="/" style={{padding: 15}}>Main</Link>
+              <Link className="nav-link" href="/" style={{padding: 15}}>Home</Link>
               <Link className="nav-link" href="/videos" style={{padding: 15}}>Videos</Link>
               <Link className="nav-link" href="/preview/file-123" style={{padding: 15}}>Preview</Link>
             </nav>
