@@ -3,6 +3,9 @@
 
 export default function OriginalFrame() {
     return(
-        <>Video Preview Here</>
+        <div>
+            <h2>Original Frame</h2>
+            <p>This component will eventually render the original frame.</p>
+        </div>
     )
 }
