@@ -3,6 +3,9 @@
 
 export default function VideoPreview() {
     return(
-        <>Video Preview Here</>
+        <div>
+            <h2>Video Preview</h2>
+            <p>This component will be used to display the analyzed video output or processed frame preview</p>
+        </div>
     )
 }
