@@ -1,5 +1,6 @@
 'use client';
 import Video from '@/components/Video';
+import { Button, List, ListItem, Typography, Box } from '@mui/material';
 
 export default function VideoChooserPage({children}){
     
@@ -17,18 +18,17 @@ export default function VideoChooserPage({children}){
     const videosJSON = getVideos();
     
     return (
-        <div style={{ border: '2px solid', borderColor: 'gold' , backgroundColor: 'lightcyan' }}>
-            <h1>Choose a video: </h1>
-            <p>This page will show the list of videos..</p>
-            <ul>
-                
+        <Box sx={{ padding:2 }}>
+            <Typography variant="h4" component="h1">Select a video</Typography>
+            <Typography variant="body1" component="body1">Listed below are the videos available for processing.</Typography>
+            <List disablePadding="true">
                 {sampleVideoData.map((filename, index) => (
-                    <Video filename={filename} key={filename+index}/>
+                    <ListItem>
+                        <Button key={index} variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
+                    </ListItem>
                     
                 ))}
-            </ul>
-
-            
-        </div>
+            </List>    
+        </Box>
     );
 }
