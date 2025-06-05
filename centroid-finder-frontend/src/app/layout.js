@@ -30,7 +30,7 @@ export default function Layout({ children }) {
         <ButtonGroup variant="text" aria-label="Basic button group">
           <Button href="/">Home</Button>
           <Button href="/videos">Videos</Button>
-          <Button href="/preview/file-123">Settings</Button>
+          <Button href="/preview/file-123">Process</Button>
         </ButtonGroup>
         <main>{children}</main>
         <footer style={{
