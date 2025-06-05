@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import Video from '@/components/Video';
 
 export default function VideoChooserPage({children}){
     
@@ -17,16 +17,18 @@ export default function VideoChooserPage({children}){
     const videosJSON = getVideos();
     
     return (
-        <div style={{ border: '2px solid', borderColor: 'gold' }}>
+        <div style={{ border: '2px solid', borderColor: 'gold' , backgroundColor: 'yellow' }}>
             <h1>Choose a video: </h1>
             <p>This page will show the list of videos..</p>
             <ul>
-                {sampleVideoData.map((filename) => (
-                    <li key={filename}>
-                        <Link href={`/preview/${filename}`}>{filename}</Link> 
-                    </li>
+                
+                {sampleVideoData.map((filename, index) => (
+                    <Video filename={filename} key={filename+index}/>
+                    
                 ))}
             </ul>
+
+            
         </div>
     );
 }
