@@ -27,3 +27,22 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+#sal-vid {
+  color: blue;
+  text-decoration: underline;
+}
+
+#student-linkedin > li > a {
+  color: blue
+}
+
+#student-linkedin {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 2rem; 
+  justify-content: center;
+  flex-wrap: wrap; 
+}
