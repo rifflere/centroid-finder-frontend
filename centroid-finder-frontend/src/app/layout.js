@@ -48,7 +48,7 @@ export default function Layout({ children }) {
             <i>This project was created by Green River College students of the Cohort 20 Software Development BAS program.</i>
             <ul id="student-linkedin" style={{ listStyle: "none", padding: 0, margin: 0 }}>
               {/* link your LinkedIn Portfolios inside of the hrefs*/}
-              <li><a href="" target="_blank" rel="noopener noreferrer">Rebecca Riffle</a></li>
+              <li><a href="https://www.linkedin.com/in/rebecca-riffle/" target="_blank" rel="noopener noreferrer">Rebecca Riffle</a></li>
               <li><a href="" target="_blank" rel="noopener noreferrer">Augy Markham</a></li>   
               <li><a href="https://www.linkedin.com/in/dev-tylergilmore/" target="_blank" rel="noopener noreferrer">Tyler Gilmore</a></li>
             </ul>
