@@ -17,7 +17,7 @@ export default function VideoChooserPage({children}){
     const videosJSON = getVideos();
     
     return (
-        <div style={{ border: '2px solid', borderColor: 'gold' , backgroundColor: 'yellow' }}>
+        <div style={{ border: '2px solid', borderColor: 'gold' , backgroundColor: 'lightcyan' }}>
             <h1>Choose a video: </h1>
             <p>This page will show the list of videos..</p>
             <ul>
