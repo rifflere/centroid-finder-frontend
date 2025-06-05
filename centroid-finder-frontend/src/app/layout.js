@@ -1,12 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
-import Image from 'next/link';
-import { Button, ButtonGroup, Typography } from '@mui/material';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import Image from 'next/image';
+import { AppBar, Box, Button, ButtonGroup, IconButton, Toolbar, Typography } from '@mui/material';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +23,18 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ButtonGroup variant="text" aria-label="Basic button group">
-          <Button href="/">Home</Button>
-          <Button href="/videos">Videos</Button>
-          <Button href="/preview/file-123">Process</Button>
-        </ButtonGroup>
+            <Box sx={{ flexGrow: 1, marginBottom: 2}}>
+              <AppBar position="static">
+                <Toolbar>
+                  <Image src="/icon.ico" width="50" height="50" alt="logo"></Image>
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Link href="/">Automated Resource Tracker </Link>
+                  </Typography>
+                  <Button variant="text" color="string" href="/videos">Select a Video</Button>
+                </Toolbar>
+              </AppBar>
+            </Box>
+
         <main>{children}</main>
         <footer style={{
           position: "absolute",
