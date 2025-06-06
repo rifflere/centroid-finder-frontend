@@ -28,9 +28,9 @@ export default function Layout({ children }) {
                 <Toolbar>
                   <Image src="/icon.ico" width="50" height="50" alt="logo"></Image>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    <Link href="/">Automated Resource Tracker </Link>
+                    <Link href="/">Salamander Spotter</Link>
                   </Typography>
-                  <Button variant="text" color="string" href="/videos">Select a Video</Button>
+                  <Button variant="text" color="string" href="/about">About</Button>
                 </Toolbar>
               </AppBar>
             </Box>
