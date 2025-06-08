@@ -1,7 +1,7 @@
 'use client';
 import Video from '@/components/Video';
 import { Button, List, ListItem, Typography, Box } from '@mui/material';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function VideoChooserPage({children}){
     
@@ -10,6 +10,7 @@ export default function VideoChooserPage({children}){
 
     // could maybe do a useEffect call to get videos on page load instead
 
+    // TODO: Use the following use effect to generate list of videos on page
     useEffect(() => {
         const fetchData = async () => {
         try {
@@ -23,6 +24,10 @@ export default function VideoChooserPage({children}){
 
         fetchData();
     }, [])
+
+    // add selected video to state
+    // TODO: Add this to the context?
+    const { video, setVideo } = useState();
 
 
     // async function getVideos() {
