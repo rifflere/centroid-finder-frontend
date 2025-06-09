@@ -46,14 +46,14 @@ export default function Layout({ children }) {
           padding: "1rem 0",
           backgroundColor: "#fff", // optional: give contrast if needed
         }}>
-          <Typography variant="body2" component="body2">ART Salamander Solutions &#169; 2025</Typography>
+          <Typography variant="body2" component="p">ART Salamander Solutions &#169; 2025</Typography>
           <div id="created-by" style={{ textAlign: "center" }}>
-            <i>This project was created by Green River College students of the Cohort 20 Software Development BAS program.</i>
+            <Typography variant="body2" component="p"><i>This project was created by Green River College students of the Cohort 20 Software Development BAS program.</i></Typography>
             <ul id="student-linkedin" style={{ listStyle: "none", padding: 0, margin: 0 }}>
               {/* link your LinkedIn Portfolios inside of the hrefs*/}
-              <li><a href="https://www.linkedin.com/in/rebecca-riffle/" target="_blank" rel="noopener noreferrer">Rebecca Riffle</a></li>
-              <li><a href="" target="_blank" rel="noopener noreferrer">Augy Markham</a></li>   
-              <li><a href="https://www.linkedin.com/in/dev-tylergilmore/" target="_blank" rel="noopener noreferrer">Tyler Gilmore</a></li>
+              <Link href="https://www.linkedin.com/in/augy-markham/" target="_blank">Augy Markham</Link>
+              <Link href="https://www.linkedin.com/in/rebecca-riffle/" target="_blank">Rebecca Riffle</Link>
+              <Link href="https://www.linkedin.com/in/dev-tylergilmore/" target="_blank">Tyler Gilmore</Link>
             </ul>
           </div>
         </footer>
