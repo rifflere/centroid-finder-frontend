@@ -8,7 +8,7 @@ import Looks5Icon from '@mui/icons-material/Looks5';
 
 export default function Home() {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
 
     {/* The left side of the grid has a list of simple istructions for starting the app */}
       <Grid size={7} sx={{ margin: 3 }}>

@@ -31,7 +31,7 @@ export default function PreviewPage({children}){
     return (
         <div style={{ border: '2px solid', borderColor: 'gold', backgroundColor: 'lightcyan' }}>
             {/* <SettingsContext.Provider value={ {filename, color, threshold} }> */}
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
                     
                     {/* The left side of the grid has the original frame and the binarized frame */}
                     <Grid size={5} sx={{padding:2}}>
