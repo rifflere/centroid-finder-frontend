@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
 import Image from 'next/image';
-import { AppBar, Box, Button, ButtonGroup, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, ButtonGroup, IconButton, Toolbar, Typography, Grid} from '@mui/material';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +24,25 @@ export default function Layout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
             <Box sx={{ flexGrow: 1, marginBottom: 2}}>
+              
               <AppBar position="static">
                 <Toolbar>
-                  <Image src="/icon.ico" width="50" height="50" alt="logo"></Image>
-                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    <Link href="/">Salamander Spotter</Link>
-                  </Typography>
-                  <Button variant="text" color="string" href="/about">About</Button>
+                  <Grid container sx={{justifyContent: "center"}}>
+                    <Grid >
+                      <Image src="/icon.ico" width="50" height="50" alt="logo"></Image>
+                    </Grid>
+                    <Grid>
+                      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Link href="/">Salamander Spotter</Link>
+                      </Typography>
+                    </Grid>
+                    <Grid>
+                      <em>Inveniamus Ensantinas</em>
+                    </Grid>
+                    <Grid>
+                      <Button variant="text" color="string" href="/about">About</Button>
+                    </Grid>
+                  </Grid>
                 </Toolbar>
               </AppBar>
             </Box>

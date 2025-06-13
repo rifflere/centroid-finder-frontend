@@ -1,13 +1,12 @@
 'use client';
-import { Box, Typography } from '@mui/material'
+import { Paper, Typography } from '@mui/material'
 
 export default function PreviewPage({children}){
-    
-    return (
-        <Box>
-            <Typography variant="h4" component="h1">
-                About
-            </Typography>
+  return (
+    <Paper elevation={1} sx={{m: 2, p: 2}}>
+      <Typography variant="h4" component="h1">
+          About
+      </Typography>
 
       {/* We'll add styling components here after I (Tyler) type up some instructions and blurbs about the project */}
       <h2>Welcome to the Salamander Finder!</h2>
@@ -19,14 +18,14 @@ export default function PreviewPage({children}){
         The goal is to automate and streamline data collection, enabling researchers to study movement patterns, behavior, and environmental responses more efficiently.
       </h4>
       <br />
-      
+  
       <p>
         <a id="sal-vid" href="https://www.youtube.com/watch?v=GppCj4Al7Rg">
           A Deep Look of the Salamander Family splitting
         </a>
       </p>
       <br />
-      
+  
       <h4>How do I use this program?</h4>
       <h4 style={{ marginTop: "1rem" }}>Instructions:</h4>
       <ol style={{ paddingLeft: "1.5rem", marginTop: "0.5rem" }}> 
@@ -34,6 +33,6 @@ export default function PreviewPage({children}){
         <li style={{ fontWeight: "bold" }}> Some </li>
         <li style={{ fontWeight: "bold" }}> Logic </li>
       </ol>
-        </Box>
-    );
+    </Paper>
+  );
 }
