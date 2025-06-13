@@ -11,12 +11,19 @@ export default function VideoChooserPage({children}){
     // could maybe do a useEffect call to get videos on page load instead
 
     // TODO: Use the following use effect to generate list of videos on page
+    const myVideos = []
+
     useEffect(() => {
         const fetchData = async () => {
         try {
             const response = await fetch('http://localhost:3000/api/videos');
             const data = await response.json();
             console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                myVideos.push(data[i].video)
+            }
+            console.log("My videos: ",myVideos)
+            console.log("Sample videos: ", sampleVideoData)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -51,6 +58,11 @@ export default function VideoChooserPage({children}){
                     </ListItem>
                     
                 ))}
+
+                {myVideos.map((filename, index) => (
+                    <p>video</p>
+                ))}
+
             </List>    
         </Box>
     );
