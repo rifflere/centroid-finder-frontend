@@ -1,3 +1,4 @@
+'use client'
 import { Box, Button, Grid, Icon, List, ListItem, ListItemIcon, ListItemText, Typography, Paper} from "@mui/material";
 import Image from 'next/image';
 import LooksOneIcon from '@mui/icons-material/LooksOne';
@@ -5,8 +6,16 @@ import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 import Looks3Icon from '@mui/icons-material/Looks3';
 import Looks4Icon from '@mui/icons-material/Looks4';
 import Looks5Icon from '@mui/icons-material/Looks5';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [randomNum, setRandomNum] = useState(Math.random());
+
+  useEffect (() => {
+    setRandomNum(Math.random());
+  }, []);
+
+
   return (
     <Paper elevation={4} sx={{m: 2, p: 2}}>
       <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
@@ -55,7 +64,7 @@ export default function Home() {
 
         {/* The right side of the grid has a logo and Latin motto */}
         <Grid size={3} sx={{ margin: 2 }} >
-          <Image src="/icon.ico" width="200" height="200" alt="logo"></Image>
+          <Image src={`/icon.ico?v=$randomNum`} width="200" height="200" alt="logo"></Image>
           <br />
           <Typography variant="subtitle1" component="h6">
               <em>Inveniamus Ensantinas</em>
