@@ -11,7 +11,7 @@ export default function VideoChooserPage({children}){
     // could maybe do a useEffect call to get videos on page load instead
 
     // TODO: Use the following use effect to generate list of videos on page
-    const myVideos = []
+    const [myVideos, setMyVideos] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,9 +19,9 @@ export default function VideoChooserPage({children}){
             const response = await fetch('http://localhost:3000/api/videos');
             const data = await response.json();
             console.log(data);
-            for (let i = 0; i < data.length; i++) {
-                myVideos.push(data[i].video)
-            }
+
+            setMyVideos(data.map(video => video.video));
+
             console.log("My videos: ",myVideos)
             console.log("Sample videos: ", sampleVideoData)
         } catch (error) {
@@ -52,7 +52,7 @@ export default function VideoChooserPage({children}){
             <Typography variant="h4" component="h1">Select a video</Typography>
             <Typography variant="body1" component="body1">Listed below are the videos available for processing.</Typography>
             <List disablePadding="true">
-                {sampleVideoData.map((filename, index) => (
+                {/* {sampleVideoData.map((filename, index) => (
                     <ListItem>
                         <Button key={index} variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
                     </ListItem>
@@ -62,6 +62,17 @@ export default function VideoChooserPage({children}){
                 {myVideos.map((filename, index) => (
                     <p>video</p>
                 ))}
+ */}
+
+                {myVideos.length > 0 ? (
+                    myVideos.map((filename, index) => (
+                        <ListItem key={index}>
+                            <Button variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
+                        </ListItem>
+                    ))
+                ) : (
+                    <Typography variant='caption' color='secondary'>Loading Videos...</Typography>
+                )}
 
             </List>    
         </Box>
