@@ -1,11 +1,11 @@
 // This component renders the binarized frame
 
-// Parent -> VideoPreview
+// Parent -> BinarizedFrameContainer
 // children -> n/a
 
 import { ImageList, ImageListItem, Typography } from "@mui/material"
 
-export default function BinarizedFrame(){
+export default function BinarizedFrame({}){
     return (
         <div style={{ backgroundColor: 'black', color:'lightblue', margin: '5px', padding: '10px'}}>
             <ImageList  cols={1} rowHeight={450}>

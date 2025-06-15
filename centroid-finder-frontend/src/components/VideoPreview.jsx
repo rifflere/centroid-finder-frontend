@@ -2,8 +2,8 @@
 // Children: Original Frame, Binarized Frame
 
 import OriginalFrame from "./OriginalFrame"
-import BinarizedFrame from "./BinarizedFrame"
 import { Button, Grid, List, ListItem, Typography, Box } from '@mui/material';
+import BinarizedFrameContainer from "./BinarizedFrameContainer";
 
 export default function VideoPreview({filename}) {
     // need to display the name of the video chosen somewhere -- params?
@@ -18,7 +18,7 @@ export default function VideoPreview({filename}) {
                     <OriginalFrame filename={filename}/>
                 </Grid>
                 <Grid size={6}>
-                    <BinarizedFrame />
+                    <BinarizedFrameContainer originalfilename={filename}/>
                 </Grid>
             </Grid>
         </Box>
