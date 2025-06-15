@@ -8,7 +8,7 @@ import Looks5Icon from '@mui/icons-material/Looks5';
 
 export default function Home() {
   return (
-    <Paper elevation={1} sx={{m: 2, p: 2}}>
+    <Paper elevation={4} sx={{m: 2, p: 2}}>
       <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
 
       {/* The left side of the grid has a list of simple istructions for starting the app */}

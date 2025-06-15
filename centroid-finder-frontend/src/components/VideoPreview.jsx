@@ -13,7 +13,6 @@ export default function VideoPreview({filename}) {
             <Typography variant="h3" component="h1">Video Preview</Typography>
             <Typography variant="h4" component="h2">Video Chosen: </Typography>
             <Typography variant="subtitle1" color='secondary'>{filename}</Typography>
-            <p>This component will be used to display the analyzed video output or processed frame preview</p>
             <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
                 <Grid size={6}>
                     <OriginalFrame filename={filename}/>

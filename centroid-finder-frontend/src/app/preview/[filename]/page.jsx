@@ -2,7 +2,7 @@
 import React from 'react';
 import VideoPreview from "@/components/VideoPreview";
 import SideBar from "@/components/SideBar";
-import { Grid, Box, Button } from "@mui/material";
+import { Grid, Box, Button, Paper} from "@mui/material";
 import { useState, createContext } from 'react';
 
 export default function PreviewPage({children, params}){
@@ -35,26 +35,27 @@ export default function PreviewPage({children, params}){
     }
     
     return (
-        <div style={{ border: '2px solid', borderColor: 'gold', backgroundColor: 'lightcyan' }}>
-            {/* <SettingsContext.Provider value={ {filename, color, threshold} }> */}
-                <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
+        <Paper elevation={4} sx={{m: 2, p: 2}}>
+                    <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
                     
                     {/* The left side of the grid has the original frame and the binarized frame */}
-                    <Grid size={5} sx={{padding:2}}>
-                        {/* <h1>Previewing: {filename}</h1> */}
-                        <p>This page will show a video frame preview in the future.</p>
-                        <VideoPreview filename={filename}/>
-                    </Grid>
+                        <Grid size={8} sx={{padding:2}}>
+                            <VideoPreview filename={filename}/>
+                        </Grid>
 
-                    {/* The right side of the grid has sidebar tools that adjust the settings and the process video button */}
-                    <Grid size={7} sx={{padding:2}}>
-                        <SideBar />
-                        <br/>
-                        <Button variant="contained" color="primary">Process Video</Button>
+                        {/* The right side of the grid has sidebar tools that adjust the settings and the process video button */}
+                        <Grid size={4} sx={{padding:2}}>
+                            <SideBar />
+                            <br/>
+                            <Button variant="contained" color="primary">Process Video</Button>
+                        </Grid>
+    
                     </Grid>
- 
-                </Grid>
-            {/* </SettingsContext.Provider> */}
-        </div>
+                </Paper>
+                
+            
     );
+    {/* <SettingsContext.Provider value={ {filename, color, threshold} }> */}
+                
+            {/* </SettingsContext.Provider> */}
 }

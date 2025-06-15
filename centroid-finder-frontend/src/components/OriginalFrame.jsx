@@ -2,6 +2,7 @@
 // Parent: Video Preview
 
 import { useState, useEffect } from 'react';
+import { ImageList, ImageListItem, Typography } from '@mui/material';
 
 export default function OriginalFrame({filename}) {
 
@@ -40,10 +41,15 @@ export default function OriginalFrame({filename}) {
     }
 
     return (
-        <div style={{ backgroundColor: 'lightblue', margin: '5px', padding: '5px' }}>
-            <h2>Original Frame</h2>
-            <p>This component will eventually render the original frame.</p>
-            <img src={thumbnail} alt="Original Frame" />
+        <div style={{ backgroundColor: 'lightblue', margin: '5px', padding: "10px" }}>
+            
+            <ImageList  cols={1} rowHeight={450}>
+                <ImageListItem>
+                    <img src={thumbnail} alt="Original Frame" />
+                </ImageListItem>
+            </ImageList>
+            <Typography variant="caption">Original Frame</Typography>
+            
         </div>
     );
 

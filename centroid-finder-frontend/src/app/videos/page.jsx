@@ -1,6 +1,6 @@
 'use client';
 import Video from '@/components/Video';
-import { Button, List, ListItem, Typography, Box } from '@mui/material';
+import { Button, List, ListItem, Typography, Box, Paper } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 export default function VideoChooserPage({children}){
@@ -47,33 +47,36 @@ export default function VideoChooserPage({children}){
     // const videosJSON = getVideos();
     
     return (
-        <Box sx={{ padding:2 }}>
-            <Typography variant="h4" component="h1">Select a video</Typography>
-            <Typography variant="body1" component="body1">Listed below are the videos available for processing.</Typography>
-            <List disablePadding="true">
-                {/* {sampleVideoData.map((filename, index) => (
-                    <ListItem>
-                        <Button key={index} variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
-                    </ListItem>
-                    
-                ))}
-
-                {myVideos.map((filename, index) => (
-                    <p>video</p>
-                ))}
- */}
-
-                {myVideos.length > 0 ? (
-                    myVideos.map((filename, index) => (
-                        <ListItem key={index}>
-                            <Button variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
+        <Paper elevation={4} sx={{m: 2, p: 2}}>
+            <Box sx={{ padding:2 }}>
+                <Typography variant="h4" component="h1">Select a video</Typography>
+                <Typography variant="body1" component="body1">Listed below are the videos available for processing.</Typography>
+                <List disablePadding="true">
+                    {/* {sampleVideoData.map((filename, index) => (
+                        <ListItem>
+                            <Button key={index} variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
                         </ListItem>
-                    ))
-                ) : (
-                    <Typography variant='caption' color='secondary'>Loading Videos...</Typography>
-                )}
+                        
+                    ))}
 
-            </List>    
-        </Box>
+                    {myVideos.map((filename, index) => (
+                        <p>video</p>
+                    ))}
+    */}
+
+                    {myVideos.length > 0 ? (
+                        myVideos.map((filename, index) => (
+                            <ListItem key={index}>
+                                <Button variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
+                            </ListItem>
+                        ))
+                    ) : (
+                        <Typography variant='caption' color='secondary'>Loading Videos...</Typography>
+                    )}
+
+                </List>    
+            </Box>
+        </Paper>
+        
     );
 }
