@@ -1,12 +1,18 @@
 'use client';
+import React from 'react';
 import VideoPreview from "@/components/VideoPreview";
 import SideBar from "@/components/SideBar";
 import { Grid, Box, Button } from "@mui/material";
 import { useState, createContext } from 'react';
 
-export default function PreviewPage({children}){
-    // const { filename } = params; // should this be props?
-    // console.log("PARAMETER FILENAME: " + params.filename)
+export default function PreviewPage({children, params}){
+    const { filename } = React.use(params, null); // should this be props?
+
+    if (!filename){
+        return <p>Loading...</p>;
+    }
+
+    console.log("PARAMETER FILENAME: " + filename)
 
     // TODO: Use context to send and get data from videosettings
     // // Create context 
@@ -37,7 +43,7 @@ export default function PreviewPage({children}){
                     <Grid size={5} sx={{padding:2}}>
                         {/* <h1>Previewing: {filename}</h1> */}
                         <p>This page will show a video frame preview in the future.</p>
-                        <VideoPreview />
+                        <VideoPreview filename={filename}/>
                     </Grid>
 
                     {/* The right side of the grid has sidebar tools that adjust the settings and the process video button */}

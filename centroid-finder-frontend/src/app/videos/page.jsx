@@ -22,7 +22,6 @@ export default function VideoChooserPage({children}){
 
             setMyVideos(data.map(video => video.video));
 
-            console.log("My videos: ",myVideos)
             console.log("Sample videos: ", sampleVideoData)
         } catch (error) {
             console.error('Error fetching data:', error);

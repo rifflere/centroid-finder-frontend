@@ -5,17 +5,18 @@ import OriginalFrame from "./OriginalFrame"
 import BinarizedFrame from "./BinarizedFrame"
 import { Button, Grid, List, ListItem, Typography, Box } from '@mui/material';
 
-export default function VideoPreview() {
+export default function VideoPreview({filename}) {
     // need to display the name of the video chosen somewhere -- params?
 
     return(
         <Box style={{ margin:2}}>
-            <Typography variant="h4" component="h1">Video Preview</Typography>
-            <h3>Video Chosen: </h3>
+            <Typography variant="h3" component="h1">Video Preview</Typography>
+            <Typography variant="h4" component="h2">Video Chosen: </Typography>
+            <Typography variant="subtitle1" color='secondary'>{filename}</Typography>
             <p>This component will be used to display the analyzed video output or processed frame preview</p>
             <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
                 <Grid size={6}>
-                    <OriginalFrame />
+                    <OriginalFrame filename={filename}/>
                 </Grid>
                 <Grid size={6}>
                     <BinarizedFrame />
