@@ -26,13 +26,13 @@ export default function PreviewPage({children}){
       </p>
       <br />
   
-      <h4>How do I use this program?</h4>
+      {/* <h4>How do I use this program?</h4>
       <h4 style={{ marginTop: "1rem" }}>Instructions:</h4>
       <ol style={{ paddingLeft: "1.5rem", marginTop: "0.5rem" }}> 
         <li style={{ fontWeight: "bold" }}> Do </li>
         <li style={{ fontWeight: "bold" }}> Some </li>
         <li style={{ fontWeight: "bold" }}> Logic </li>
-      </ol>
+      </ol> */}
     </Paper>
   );
 }
