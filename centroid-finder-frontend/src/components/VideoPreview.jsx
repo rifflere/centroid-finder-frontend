@@ -8,10 +8,8 @@ import { useContext, useState, useEffect } from 'react';
 import { SettingsContext } from "@/context/SettingsContext";
 
 export default function VideoPreview({filename}) {
-    // create thumbnail state
-    const [thumbnail, setThumbnail] = useState();
-    // get filename from Settings Context
-    const { setFilename } = useContext(SettingsContext);
+    // get filename, thumbnail, and thumbnail setter from Settings Context
+    const { setFilename, thumbnail, setThumbnail } = useContext(SettingsContext);
 
     // Store filename in context on load or when it changes
     useEffect(() => {
@@ -55,7 +53,7 @@ export default function VideoPreview({filename}) {
         <Box style={{ margin:2}}>
             <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
                 <Grid size={6}>
-                    <OriginalFrame imgURL={thumbnail} filename={filename}/>
+                    <OriginalFrame/>
                 </Grid>
                 <Grid size={6}>
                     <BinarizedFrameContainer imgURL={thumbnail} filename={filename}/>

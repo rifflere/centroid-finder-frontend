@@ -3,8 +3,9 @@
 // Parent -> VideoPreview
 // children -> BinarizedFrame
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import BinarizedFrame from "./BinarizedFrame"
+import { SettingsContext } from "@/context/SettingsContext";
 
 export default function BinarizedFrameContainer({imgURL}){
     

@@ -10,12 +10,14 @@ export const SettingsProvider = ({ children }) => {
     const [filename, setFilename] = useState("");
     const [color, setColor] = useState("#000000"); // default color black
     const [threshold, setThreshold] = useState(0); // default threshold 0
+    const [thumbnail, setThumbnail] = useState(""); 
 
     return (
         <SettingsContext.Provider value={{
             filename, setFilename,
             color, setColor,
-            threshold, setThreshold
+            threshold, setThreshold,
+            thumbnail, setThumbnail
         }}>
         {children}
         </SettingsContext.Provider>
