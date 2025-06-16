@@ -3,10 +3,11 @@
 // Parent -> VideoPreview
 // children -> BinarizedFrame
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import BinarizedFrame from "./BinarizedFrame"
 
-export default function BinarizedFrameContainer({originalfilename}){
+export default function BinarizedFrameContainer({imgURL}){
+    
     // TODO: Logic for Binarized frame
     // color
     // threshold
@@ -16,12 +17,13 @@ export default function BinarizedFrameContainer({originalfilename}){
     let color = "#EAC659";
     const threshold = 50;
 
-
     useEffect(() => {
-        processImage(originalfilename);
-    },[]);
+        processImage(imgURL);
+    }, [imgURL]);
 
-    const processImage = (image) => {
+    const processImage = (thumbnail) => {
+        console.log(thumbnail);
+        console.log("Image type: ", typeof thumbnail);
         // convert possible hex to rgb
         color = color.replace('#', '');
 
@@ -36,6 +38,17 @@ export default function BinarizedFrameContainer({originalfilename}){
         console.log(color);
 
         // convert thumbnail to 2D array (canvas)
+        const image = new Image();
+        image.src = thumbnail;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2D');
+        canvas.width = image.width;
+        canvas.height = image.height;
+
+        console.log(`Width: ${canvas.width}`);
+        console.log(`Height: ${canvas.height}`);
+
 
         // call binarizeImage with canvas
         
