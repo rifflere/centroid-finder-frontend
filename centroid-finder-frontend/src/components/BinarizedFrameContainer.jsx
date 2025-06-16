@@ -136,14 +136,14 @@ if (maxCount > 0) {
   // Small filled center dot
   ctx.beginPath();
   ctx.arc(centroidX, centroidY, 8, 0, 2 * Math.PI); // small radius
-  ctx.fillStyle = "#ff8900"; // orange fill
+  ctx.fillStyle = "#f32f79"; // orange fill
   ctx.fill();
 
   // Larger hollow ring around it
   ctx.beginPath();
   ctx.arc(centroidX, centroidY, 20, 0, 2 * Math.PI); // bigger radius
   ctx.lineWidth = 4; // ring thickness
-  ctx.strokeStyle = "#ff8900"; // orange stroke
+  ctx.strokeStyle = "#f32f79"; // orange stroke
   ctx.stroke();
 }
 
