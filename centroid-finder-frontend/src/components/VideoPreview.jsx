@@ -56,7 +56,7 @@ export default function VideoPreview({filename}) {
                     <OriginalFrame/>
                 </Grid>
                 <Grid size={6}>
-                    <BinarizedFrameContainer imgURL={thumbnail} filename={filename}/>
+                    <BinarizedFrameContainer/>
                 </Grid>
             </Grid>
         </Box>
