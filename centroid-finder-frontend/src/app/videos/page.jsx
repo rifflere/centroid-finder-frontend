@@ -1,25 +1,29 @@
 'use client';
 import Video from '@/components/Video';
+import { SettingsContext } from "@/context/SettingsContext";
 import { Button, List, ListItem, Typography, Box, Paper } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export default function VideoChooserPage({children}){
-    
+
     // Temporary Data until we get an api route to paste here or whatever we use to retrieve data from Docker
-    const sampleVideoData = ['video1.mp4', 'video2.mp4', 'video3.mp4'];
+    // const sampleVideoData = ['video1.mp4', 'video2.mp4', 'video3.mp4'];
 
-    // could maybe do a useEffect call to get videos on page load instead
-
-    // TODO: Use the following use effect to generate list of videos on page
+    // Get setFilename function from Settings Context
+    const { setFilename } = useContext(SettingsContext);
+    // Create myVideos state to hold an array of available videos
     const [myVideos, setMyVideos] = useState([]);
 
+    // This useEffect runs once when the page loads, it fetches a list of videos from the api
     useEffect(() => {
+        // fetch call to get list of all available videos
         const fetchData = async () => {
         try {
             const response = await fetch('http://localhost:3000/api/videos');
             const data = await response.json();
             console.log(data);
 
+            // set videos state to contain each video returned from fetch call
             setMyVideos(data.map(video => video.video));
 
             console.log("Sample videos: ", sampleVideoData)
@@ -27,24 +31,8 @@ export default function VideoChooserPage({children}){
             console.error('Error fetching data:', error);
         }
         };
-
         fetchData();
     }, [])
-
-    // add selected video to state
-    // TODO: Add this to the context?
-    const { video, setVideo } = useState();
-
-
-    // async function getVideos() {
-    //     const res = await fetch("http://localhost:3000/api/videos");
-    //     const data = await res.json();
-        
-    //     console.log(data);
-    //     return data;
-    // }
-
-    // const videosJSON = getVideos();
     
     return (
         <Paper elevation={4} sx={{m: 2, p: 2}}>
@@ -52,31 +40,20 @@ export default function VideoChooserPage({children}){
                 <Typography variant="h4" component="h1">Select a video</Typography>
                 <Typography variant="body1" component="body1">Listed below are the videos available for processing.</Typography>
                 <List disablePadding="true">
-                    {/* {sampleVideoData.map((filename, index) => (
-                        <ListItem>
-                            <Button key={index} variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
-                        </ListItem>
-                        
-                    ))}
 
-                    {myVideos.map((filename, index) => (
-                        <p>video</p>
-                    ))}
-    */}
-
+                    {/* While videos is loading, display "Loading videos...", then display all videos found */}
                     {myVideos.length > 0 ? (
                         myVideos.map((filename, index) => (
                             <ListItem key={index}>
-                                <Button variant="outlined" href={`/preview/${filename}`}>{filename}</Button>
+                                {/* When this button is clicked, it sets filenname to the name of the selected video */}
+                                <Button variant="outlined" onClick={() => setFilename(filename)} href={`/preview/${filename}`}>{filename}</Button>
                             </ListItem>
                         ))
                     ) : (
                         <Typography variant='caption' color='secondary'>Loading Videos...</Typography>
                     )}
-
                 </List>    
             </Box>
-        </Paper>
-        
+        </Paper>   
     );
 }
