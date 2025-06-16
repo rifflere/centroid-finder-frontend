@@ -62,11 +62,9 @@ export default function Layout({ children }) {
             padding: "1rem 0",
             backgroundColor: "#fff", // optional: give contrast if needed
           }}> */}
-          <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-            <BottomNavigation>
-              <Typography variant='caption'>Inveniamus Ensantinas</Typography>
+          <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, p: 1}} elevation={3}>
 
-              <Typography variant="body2" component="p">ART Salamander Solutions &#169; 2025</Typography>
+              <Typography align='center' variant="body2" component="p">ART Salamander Solutions &#169; 2025</Typography>
               <div id="created-by" style={{ textAlign: "center" }}>
                 
                 <Typography variant="body2" component="p" color="secondary"  ><i>This project was created by Green River College students of the Cohort 20 Software Development BAS program.</i></Typography>
@@ -77,7 +75,6 @@ export default function Layout({ children }) {
                   <Button href="https://www.linkedin.com/in/dev-tylergilmore/" target="_blank" > Tyler Gilmore</Button>
                 </ul>
               </div>
-            </BottomNavigation>
           </Paper>
           {/* </footer> */}
         </ThemeRegistry>
