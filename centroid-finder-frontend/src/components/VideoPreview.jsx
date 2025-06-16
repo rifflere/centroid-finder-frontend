@@ -2,16 +2,23 @@
 // Children: Original Frame, Binarized Frame
 
 import OriginalFrame from "./OriginalFrame"
-import { Button, Grid, List, ListItem, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
 import BinarizedFrameContainer from "./BinarizedFrameContainer";
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { SettingsContext } from "@/context/SettingsContext";
 
 export default function VideoPreview({filename}) {
-    // need to display the name of the video chosen somewhere -- params?
-
+    // create thumbnail state
     const [thumbnail, setThumbnail] = useState();
+    // get filename from Settings Context
+    const { setFilename } = useContext(SettingsContext);
 
-    // TODO: access filename from context
+    // Store filename in context on load or when it changes
+    useEffect(() => {
+        setFilename(filename);
+    }, [filename, setFilename]);
+
+    // GET thumbnail from api
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -39,15 +46,13 @@ export default function VideoPreview({filename}) {
     }, [filename]);
 
 
+    // Display text while video is loading
     if (!thumbnail) {
         return <Typography variant='caption' color='secondary'>Loading Video...</Typography>;
     }
 
     return(
-        <Box style={{ margin:2}}>{/* 
-            <Typography variant="h3" component="h1">Video Preview</Typography>
-            <Typography variant="h4" component="h2">Video Chosen: </Typography> */}
-            
+        <Box style={{ margin:2}}>
             <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
                 <Grid size={6}>
                     <OriginalFrame imgURL={thumbnail} filename={filename}/>
