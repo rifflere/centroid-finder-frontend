@@ -44,16 +44,16 @@ export default function VideoPreview({filename}) {
     }
 
     return(
-        <Box style={{ margin:2}}>
+        <Box style={{ margin:2}}>{/* 
             <Typography variant="h3" component="h1">Video Preview</Typography>
-            <Typography variant="h4" component="h2">Video Chosen: </Typography>
-            <Typography variant="subtitle1" color='secondary'>{filename}</Typography>
+            <Typography variant="h4" component="h2">Video Chosen: </Typography> */}
+            
             <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
                 <Grid size={6}>
-                    <OriginalFrame imgURL={thumbnail}/>
+                    <OriginalFrame imgURL={thumbnail} filename={filename}/>
                 </Grid>
                 <Grid size={6}>
-                    <BinarizedFrameContainer imgURL={thumbnail}/>
+                    <BinarizedFrameContainer imgURL={thumbnail} filename={filename}/>
                 </Grid>
             </Grid>
         </Box>

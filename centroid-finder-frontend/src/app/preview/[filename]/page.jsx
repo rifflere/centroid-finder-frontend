@@ -2,7 +2,7 @@
 import React from 'react';
 import VideoPreview from "@/components/VideoPreview";
 import SideBar from "@/components/SideBar";
-import { Grid, Box, Button, Paper} from "@mui/material";
+import { Grid, Box, Button, Paper, Typography} from "@mui/material";
 import { useState, createContext } from 'react';
 
 export default function PreviewPage({children, params}){
@@ -36,6 +36,7 @@ export default function PreviewPage({children, params}){
     
     return (
         <Paper elevation={4} sx={{m: 2, p: 2}}>
+            <Typography variant='h2'color='primary'>Video Preview</Typography>
             <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
             
             {/* The left side of the grid has the original frame and the binarized frame */}
