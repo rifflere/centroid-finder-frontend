@@ -9,89 +9,111 @@ import React from 'react';
 import { useContext, useEffect, useState} from 'react'
 import { SettingsContext } from "@/context/SettingsContext";
 import CircularProgress from '@mui/material/CircularProgress';
+import { ControlPointSharp } from '@mui/icons-material';
 
 export default function VideoActions(){
+
     // get filename, color, and threshold states fron the Settings Context
     const { filename, color, threshold } = useContext(SettingsContext);
-    console.log("Video Actions filename,color,threshold: ", filename, color, threshold);
-
-    // encode color and threshold formats for POST request URL
     const encodedColor = encodeURIComponent(color);
     const encodedThreshold = encodeURIComponent(threshold);
 
     // submit button loading state - from MUI Button Documentation
     const [loading, setLoading] = React.useState(false);
+    const [status, setStatus] = useState('');
+    const [jobId, setJobId] = useState(null);
 
-      // Handle Process Click
+
+    // Handle the video processing button click
     const handleProcess = async () => {
-    // Error for empty inputs
-        if (!filename || !color || !threshold) {
-        alert("Please enter a color and threshold!");
-        return;
-        }
 
-    setLoading(true);
-
-    // try catch
-    try {
+      // try catch
+      try {
+        // Logging the post request
         console.log("Sending URL:", `http://localhost:3000/process/${filename}?targetColor=${encodedColor}&threshold=${encodedThreshold}`);
 
-        // POST to api with filename, color, and threshold
+        // POST request to start processing (with filename, color, and threshold)
         const response = await fetch(
             `http://localhost:3000/process/${filename}?targetColor=${encodedColor}&threshold=${encodedThreshold}`,
             { method: 'POST' }
         );
 
-      if (!response.ok) {
-        throw new Error("Processing failed!");
+        if (!response.ok) {
+          throw new Error("Processing failed!");
+        }
+
+        const jobData = await response.json();
+        setJobId(jobData.jobId);
+
+        // Set status to "processing" once the job starts
+        setStatus('processing'); 
+
+        // Start loading indicator
+        setLoading(true); 
+
+      } catch (error) {
+        console.error(error);
+        alert("An error occurred while processing the video.");
       }
+    };
 
-      // Redirect to results
-      window.location.href = `/result/${filename}`;
 
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred while processing the video.");
-    } finally {
-        // update loading state
-        setLoading(false);
-    }
-  };
+    useEffect(() => {
+      if (jobId && loading) {
+        const interval = setInterval(async () => {
+          try {
+            // Get the status of the processing job
+            const response = await fetch(`http://localhost:3000/process/${jobId}/status`);
+            const data = await response.json();
 
-    // React.useEffect(() => {
-    //     const timeout = setTimeout(() => {
-    //     setLoading(false);
-    //     }, 2000);
-    //     return () => clearTimeout(timeout);
-    // });
+            if (data.status === 'done') {
+              setStatus('done');
+              setLoading(false); // Stop loading
+              clearInterval(interval); // Stop polling once it's done
 
-    // useEffect(() => {
-        
-    // })
+              // Redirect to results page
+              window.location.href = `/result/${filename}`;
+            } else {
+              setStatus('processing');
+            }
+
+          } catch (error) {
+            console.error('Error fetching status:', error);
+            setLoading(false); // Stop loading on error
+            clearInterval(interval); // Stop polling on error
+          }
+        }, 1000); // Check every second
+
+        // Clean up the interval on component unmount
+        return () => clearInterval(interval);
+      }
+    }, [jobId, loading]);
 
     return (
-        <Paper elevation={4} sx={{m: 2, p: 2}}>
-            <Button
-        onClick={handleProcess}
-        disabled={loading}
-        variant="contained"
-        color="secondary"
-        sx={{ width: 1, my: 1 }}
-        // TODO: figure out why this loading bar isn't showing up
-        startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
-      >
-        {loading ? "Processing..." : "Process Video"}
-      </Button>
+      <Paper elevation={4} sx={{ m: 2, p: 2 }}>
+        <Button
+          onClick={() => {
+            setStatus(''); // Reset status before starting
+            handleProcess();
+          }}
+          disabled={loading}
+          variant="contained"
+          color="secondary"
+          sx={{ width: 1, my: 1 }}
+          startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
+        >
+          {loading ? 'Processing...' : 'Process Video'}
+        </Button>
 
-      <Button
-        variant="outlined"
-        color="secondary"
-        href="/videos"
-        sx={{ width: 1, my: 1 }}
-      >
-        Back to Videos
-      </Button>
-        </Paper>
-        
-    )
+        <Button
+          variant="outlined"
+          color="secondary"
+          href="/videos"
+          sx={{ width: 1, my: 1 }}
+        >
+          Back to Videos
+        </Button>
+      </Paper>
+    );
+
 }
