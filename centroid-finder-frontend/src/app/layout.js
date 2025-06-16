@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AppBar, Box, Button, ButtonGroup, IconButton, Toolbar, Typography, Grid, Container} from '@mui/material';
 import ThemeRegistry from "./ThemeRegistry";
+import { SettingsProvider } from "@/context/SettingsContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* HEADER */}
         <ThemeRegistry>
           <Box sx={{ flexGrow: 1, marginBottom: 2}}>
             
@@ -42,7 +44,14 @@ export default function Layout({ children }) {
               
             </AppBar>
           </Box>
-          <main>{children}</main>
+
+        {/* MAIN CONTENT */}
+        {/* Wrap all content in SettingsProvider context */}
+        <SettingsProvider>
+          {children}
+        </SettingsProvider>
+
+        {/* FOOTER */}
           <footer style={{
             position: "absolute",
             bottom: 0,
