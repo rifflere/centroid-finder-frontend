@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
 import Image from 'next/image';
-import { AppBar, Box, Button, ButtonGroup, IconButton, Toolbar, Typography, Grid, Container} from '@mui/material';
+import { AppBar, Box, Button, ButtonGroup, BottomNavigation, IconButton, Paper, Toolbar, Typography, Grid, Container} from '@mui/material';
 import ThemeRegistry from "./ThemeRegistry";
 import { SettingsProvider } from "@/context/SettingsContext";
 
@@ -52,7 +52,7 @@ export default function Layout({ children }) {
         </SettingsProvider>
 
         {/* FOOTER */}
-          <footer style={{
+          {/* <footer style={{
             position: "absolute",
             bottom: 0,
             width: "100%",
@@ -61,21 +61,25 @@ export default function Layout({ children }) {
             alignItems: "center",
             padding: "1rem 0",
             backgroundColor: "#fff", // optional: give contrast if needed
-          }}>
-            <Typography variant='caption'>Inveniamus Ensantinas</Typography>
+          }}> */}
+          <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+            <BottomNavigation>
+              <Typography variant='caption'>Inveniamus Ensantinas</Typography>
 
-            <Typography variant="body2" component="p">ART Salamander Solutions &#169; 2025</Typography>
-            <div id="created-by" style={{ textAlign: "center" }}>
-              
-              <Typography variant="body2" component="p" color="secondary"  ><i>This project was created by Green River College students of the Cohort 20 Software Development BAS program.</i></Typography>
-              <ul id="student-linkedin" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {/* link your LinkedIn Portfolios inside of the hrefs*/}
-                <Button href="https://www.linkedin.com/in/augy-markham/" target="_blank">Augy Markham</Button>
-                <Button href="https://www.linkedin.com/in/rebecca-riffle/" target="_blank">Rebecca Riffle</Button>
-                <Button href="https://www.linkedin.com/in/dev-tylergilmore/" target="_blank" > Tyler Gilmore</Button>
-              </ul>
-            </div>
-          </footer>
+              <Typography variant="body2" component="p">ART Salamander Solutions &#169; 2025</Typography>
+              <div id="created-by" style={{ textAlign: "center" }}>
+                
+                <Typography variant="body2" component="p" color="secondary"  ><i>This project was created by Green River College students of the Cohort 20 Software Development BAS program.</i></Typography>
+                <ul id="student-linkedin" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {/* link your LinkedIn Portfolios inside of the hrefs*/}
+                  <Button href="https://www.linkedin.com/in/augy-markham/" target="_blank">Augy Markham</Button>
+                  <Button href="https://www.linkedin.com/in/rebecca-riffle/" target="_blank">Rebecca Riffle</Button>
+                  <Button href="https://www.linkedin.com/in/dev-tylergilmore/" target="_blank" > Tyler Gilmore</Button>
+                </ul>
+              </div>
+            </BottomNavigation>
+          </Paper>
+          {/* </footer> */}
         </ThemeRegistry>
       </body>
     </html>
