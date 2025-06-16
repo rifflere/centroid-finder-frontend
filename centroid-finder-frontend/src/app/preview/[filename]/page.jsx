@@ -36,22 +36,23 @@ export default function PreviewPage({children, params}){
     
     return (
         <Paper elevation={4} sx={{m: 2, p: 2}}>
-                    <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
-                    
-                    {/* The left side of the grid has the original frame and the binarized frame */}
-                        <Grid size={8} sx={{padding:2}}>
-                            <VideoPreview filename={filename}/>
-                        </Grid>
+            <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
+            
+            {/* The left side of the grid has the original frame and the binarized frame */}
+                <Grid size={8} sx={{padding:2}}>
+                    <VideoPreview filename={filename}/>
+                </Grid>
 
-                        {/* The right side of the grid has sidebar tools that adjust the settings and the process video button */}
-                        <Grid size={4} sx={{padding:2}}>
-                            <SideBar />
-                            <br/>
-                            <Button variant="contained" color="primary">Process Video</Button>
-                        </Grid>
-    
-                    </Grid>
-                </Paper>
+                {/* The right side of the grid has sidebar tools that adjust the settings and the process video button */}
+                <Grid size={4} sx={{padding:2}}>
+                    <SideBar />
+                    <br/>
+                    <Button variant="contained" color="primary">Process Video</Button>
+                </Grid>
+
+            </Grid>
+            <Button href={`/result/${filename}`}>Temp Link to Result Page</Button>
+        </Paper>
                 
             
     );
