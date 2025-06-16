@@ -41,8 +41,6 @@ export default function BinarizedFrameContainer(){
 
   const binarizeImage = async (imageUrl, hexColor, threshold) => {
   const img = await loadImage(imageUrl);
-  console.log("Image loaded:", img.width, img.height);
-
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   canvas.width = img.width;
@@ -52,14 +50,14 @@ export default function BinarizedFrameContainer(){
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
 
+  // Convert target hex color to RGB
   const hex = hexColor.replace("#", "");
   const targetR = parseInt(hex.substring(0, 2), 16);
   const targetG = parseInt(hex.substring(2, 4), 16);
   const targetB = parseInt(hex.substring(4, 6), 16);
 
-  console.log("Target color RGB:", targetR, targetG, targetB);
-  console.log("Threshold:", threshold);
-
+  // Step 1: Binarize (white if in range, else black)
+  const binary = new Uint8Array(canvas.width * canvas.height); // 0 or 1
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
     const g = data[i + 1];
@@ -67,16 +65,92 @@ export default function BinarizedFrameContainer(){
     const distance = Math.sqrt(
       (r - targetR) ** 2 + (g - targetG) ** 2 + (b - targetB) ** 2
     );
-    const value = distance < threshold ? 255 : 0;
+    const isWhite = distance < threshold ? 1 : 0;
+    binary[i / 4] = isWhite;
+    const value = isWhite ? 255 : 0;
     data[i] = value;
     data[i + 1] = value;
     data[i + 2] = value;
-    data[i + 3] = 255; // **Make pixel fully opaque**
+    data[i + 3] = 255;
   }
 
+  // Step 2: Find largest connected region with BFS
+  const visited = new Uint8Array(binary.length);
+  let maxCount = 0;
+  let centroidX = 0;
+  let centroidY = 0;
+
+  const w = canvas.width;
+  const h = canvas.height;
+
+  const directions = [
+    [1, 0], [-1, 0], [0, 1], [0, -1]
+  ];
+
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const idx = y * w + x;
+      if (binary[idx] === 1 && !visited[idx]) {
+        // New region: start BFS
+        const queue = [[x, y]];
+        visited[idx] = 1;
+
+        let count = 0;
+        let sumX = 0;
+        let sumY = 0;
+
+        while (queue.length) {
+          const [cx, cy] = queue.pop();
+          const cidx = cy * w + cx;
+          count++;
+          sumX += cx;
+          sumY += cy;
+
+          for (const [dx, dy] of directions) {
+            const nx = cx + dx;
+            const ny = cy + dy;
+            if (
+              nx >= 0 && nx < w && ny >= 0 && ny < h &&
+              binary[ny * w + nx] === 1 && !visited[ny * w + nx]
+            ) {
+              visited[ny * w + nx] = 1;
+              queue.push([nx, ny]);
+            }
+          }
+        }
+
+        if (count > maxCount) {
+          maxCount = count;
+          centroidX = sumX / count;
+          centroidY = sumY / count;
+        }
+      }
+    }
+  }
+
+  // Step 3: Put updated binarized image back
   ctx.putImageData(imageData, 0, 0);
+
+  // Step 4: Draw centroid as orange dot
+if (maxCount > 0) {
+  // Small filled center dot
+  ctx.beginPath();
+  ctx.arc(centroidX, centroidY, 8, 0, 2 * Math.PI); // small radius
+  ctx.fillStyle = "#ff8900"; // orange fill
+  ctx.fill();
+
+  // Larger hollow ring around it
+  ctx.beginPath();
+  ctx.arc(centroidX, centroidY, 20, 0, 2 * Math.PI); // bigger radius
+  ctx.lineWidth = 4; // ring thickness
+  ctx.strokeStyle = "#ff8900"; // orange stroke
+  ctx.stroke();
+}
+
+  // Step 5: Return data URL
   return canvas.toDataURL();
 };
+
 
     
     return (
