@@ -9,7 +9,7 @@ export default function PreviewPage({children, params}){
     const { filename } = React.use(params, null); // should this be props?
 
     if (!filename){
-        return <p>Loading...</p>;
+        return <Typography variant='caption' color='secondary'>Loading Videos...</Typography>;
     }
 
     console.log("PARAMETER FILENAME: " + filename)
@@ -46,7 +46,7 @@ export default function PreviewPage({children, params}){
 
                 {/* The right side of the grid has sidebar tools that adjust the settings and the process video button */}
                 <Grid size={4} sx={{padding:2}}>
-                    <SideBar />
+                    <SideBar filename={filename} />
                     
                 </Grid>
 

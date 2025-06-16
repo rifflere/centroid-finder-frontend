@@ -9,7 +9,7 @@ import React from 'react';
 import {useEffect, useState} from 'react'
 
 export default function VideoActions(){
-    // submit button loading
+    // submit button loading - gotten from MUI Button Documentation
     const [loading, setLoading] = React.useState(false);
     React.useEffect(() => {
         const timeout = setTimeout(() => {
@@ -17,6 +17,10 @@ export default function VideoActions(){
         }, 2000);
         return () => clearTimeout(timeout);
     });
+
+    useEffect(() => {
+        
+    })
 
     return (
         <Paper elevation={4} sx={{m: 2, p: 2}}>

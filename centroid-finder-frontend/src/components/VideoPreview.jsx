@@ -40,7 +40,7 @@ export default function VideoPreview({filename}) {
 
 
     if (!thumbnail) {
-        return <p>Loading...</p>;
+        return <Typography variant='caption' color='secondary'>Loading Video...</Typography>;
     }
 
     return(

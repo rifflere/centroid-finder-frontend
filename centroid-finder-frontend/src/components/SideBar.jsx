@@ -6,11 +6,11 @@ import VideoSettings from "./VideoSettings";
 import VideoActions from "./VideoActions";
 import { Paper } from '@mui/material'
 
-export default function SideBar(){
+export default function SideBar({ filename }){
     return (
         <div>
             <VideoSettings />
-            <VideoActions />
+            <VideoActions filename={filename}/>
         </div>
         
     )
