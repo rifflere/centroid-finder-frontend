@@ -2,12 +2,12 @@
 import React, { useContext } from 'react';
 import { Typography, Paper, Button } from "@mui/material";
 import { SettingsContext } from "@/context/SettingsContext";
-
+import { useParams } from 'next/navigation';
 
 export default function PreviewPage({children, params}){
     // Get filename from context or fallback to route param
     const { filename: contextFilename } = useContext(SettingsContext);
-    const paramFilename = params?.filename;
+    const { filename: paramFilename } = useParams();
 
     const filename = contextFilename || paramFilename;
     
