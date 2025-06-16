@@ -46,8 +46,7 @@ export default function PreviewPage({children, params}){
                 {/* The right side of the grid has sidebar tools that adjust the settings and the process video button */}
                 <Grid size={4} sx={{padding:2}}>
                     <SideBar />
-                    <br/>
-                    <Button variant="contained" color="primary">Process Video</Button>
+                    
                 </Grid>
 
             </Grid>

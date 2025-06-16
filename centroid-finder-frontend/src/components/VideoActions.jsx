@@ -3,12 +3,26 @@
 // Parent -> SideBar
 // children -> n/a
 
+import { Button, Paper} from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import React from 'react';
+import {useEffect, useState} from 'react'
+
 export default function VideoActions(){
+    // submit button loading
+    const [loading, setLoading] = React.useState(false);
+    React.useEffect(() => {
+        const timeout = setTimeout(() => {
+        setLoading(false);
+        }, 2000);
+        return () => clearTimeout(timeout);
+    });
+
     return (
-        <div style={{ backgroundColor: 'lightyellow', margin: '5px', padding: '5px'}}>
-            <h3>VideoActions Component <bold>Pending...</bold></h3>
-            <a href="/videos">Back to Videos</a>
-        </div>
+        <Paper elevation={4} sx={{m: 2, p: 2}}>
+            <Button onClick={() => setLoading(true)} loading={loading} variant="contained" color="secondary" sx={{width: 1, my: 1}}>Process Video</Button>
+            <Button variant="outlined" color="secondary" href="/videos" sx={{width: 1, my: 1}}>Back to Videos</Button>
+        </Paper>
         
     )
 }
