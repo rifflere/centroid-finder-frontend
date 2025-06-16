@@ -30,7 +30,7 @@ export default function Layout({ children }) {
             <AppBar position="static">
               <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                  <Image src="/icon.ico" width="50" height="50" alt="logo"></Image>
+                  <Image src="/icon-white.ico" width="50" height="50" alt="logo"></Image>
                   
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                   <Link href="/">Salamander Spotter</Link>
