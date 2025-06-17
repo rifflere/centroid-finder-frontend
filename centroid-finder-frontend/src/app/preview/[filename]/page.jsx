@@ -36,7 +36,7 @@ export default function PreviewPage({children, params}){
     
     return (
         <Paper elevation={4} sx={{m: 2, p: 2}}>
-            <Typography variant='h2'color='primary'>Video Preview</Typography>
+            <Typography variant='h4' component='h1'>Video Preview</Typography>
             <Grid container spacing={2} sx={{justifyContent:"space-between"}}>
             
             {/* The left side of the grid has the original frame and the binarized frame */}
