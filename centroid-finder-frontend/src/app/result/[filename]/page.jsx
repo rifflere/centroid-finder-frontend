@@ -20,8 +20,8 @@ export default function PreviewPage({children, params}){
 
     return (
         <Paper elevation={4} sx={{m: 2, p: 2}}>
-            <Typography variant='h4' component='h1'>Processing Complete</Typography>
-            <Typography variant='body2' component='p'>{filename}</Typography>
+            <Typography variant='Title' component='h1'>Finished Processing: </Typography>
+            <Typography variant='body2' component='p' color='primary'>{filename}</Typography>
             {/* Add a link to the csv file on the user's pc */}
             <Button variant="contained" color="secondary" target="_blank" href={`http://localhost:3000/results/${csvFilename}.csv`} sx={{width: 1, my: 1}}>Download Results</Button>
             <Button variant="outlined" color="secondary" href="/videos" sx={{width: 1, my: 1}}>Back to Videos</Button>

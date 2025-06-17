@@ -15,6 +15,18 @@ export default function Home() {
     setRandomNum(Math.random());
   }, []);
 
+  // Handle Image Change on Hover
+  const[imageSrc, setImageSrc] = useState('/splat-orange.PNG');
+  const hoverImageSrc = '/salamander-orange.ico';
+
+  const handleMouseEnter = () => {
+    setImageSrc(hoverImageSrc);
+  };
+
+  const handleMouseLeave = () => {
+    setImageSrc('/splat-orange.PNG')
+  }
+
 
   return (
     <Paper elevation={4} sx={{m: 2, p: 2}}>
@@ -58,13 +70,18 @@ export default function Home() {
               </ListItem>
 
             </List>
-            <Button variant="contained" color="primary" href="/videos">Start</Button>
+            
+              <Button variant="contained" color="primary" href="/videos">Start</Button>
+            
+            
           <br />
         </Grid>
 
         {/* The right side of the grid has a logo and Latin motto */}
-        <Grid size={3} sx={{ margin: 2 }} >
-          <Image src={`/icon.ico?v=$randomNum`} width="200" height="200" alt="logo"></Image>
+        <Grid size={3} sx={{ margin: 2, justifyContent: "right", alignItems: "right"}} >
+          <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+            <Image src={imageSrc} width="200" height="200" alt="logo"></Image>
+          </div>
           <br />
           <Typography variant="subtitle1" component="h6">
               <em>Inveniamus Ensantinas</em>
@@ -72,7 +89,6 @@ export default function Home() {
               Let's find Salamanders
           </Typography>
         </Grid>
-
       </Grid>
     </Paper>
   );
