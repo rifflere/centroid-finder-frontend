@@ -72,7 +72,8 @@ export default function PreviewPage({ children, params }){
                     </Table>
                 </TableContainer>
             ) : (
-                <Typography variant="body2" sx={{ mt: 2 }}>Loading CSV results or no data found 🧐</Typography>
+                <Typography variant="body2" color='primary' sx={{ mt: 2 }}>CSV Display Feature Coming Soon! {/* Loading CSV results or no data found 🧐 */}</Typography>
+                
             )}
         </Paper>
     )

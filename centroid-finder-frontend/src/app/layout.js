@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "ART Centroid Finder - Salamander Tracker",
+  title: "Salamander Spotter",
   description: "Track and preview salamander movement from videos",
 };
 
