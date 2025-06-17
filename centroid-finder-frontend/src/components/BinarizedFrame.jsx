@@ -4,7 +4,7 @@
 // children -> n/a
 
 import { ImageList, ImageListItem, Typography, Paper } from "@mui/material"
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { SettingsContext } from "@/context/SettingsContext";
 
 
@@ -21,7 +21,6 @@ export default function BinarizedFrame({ binarizedSrc }){
             <ImageList  cols={1} rowHeight={450}>
                 <ImageListItem>
                     <img src={binarizedSrc} alt="Binarized Frame" />
-                    {/* TODO: Logic for Binarized Frame? This is where it is rendered at least */}
                 </ImageListItem>
             </ImageList>
             <Typography variant="caption">Binarized Frame</Typography>
