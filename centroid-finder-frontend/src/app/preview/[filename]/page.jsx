@@ -51,7 +51,7 @@ export default function PreviewPage({children, params}){
                 </Grid>
 
             </Grid>
-            <Button href={`/result/${filename}`}>Temp Link to Result Page</Button>
+            {/* <Button href={`/result/${filename}`}>Temp Link to Result Page</Button> */}
         </Paper>
                 
             
